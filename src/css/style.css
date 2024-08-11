@@ -1,0 +1,109 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.carrossel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+/* z-index, move o elemento no eixo z [profundidade]. Padrao eh zero[0], -1 joga pra tras do padrao e permite o texto ficar sobre a imagem */
+.informacoes {
+    display: none;
+}
+
+.informacoes.ativa {
+    display: block;
+}
+
+/* duas classes usadas indica primeiro que só quem tiver as duas classes recebe essa estilizacao. Segundo as classes devem estar sem espaco */
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-evenly;
+}
+
+.informacoes h1 {
+    font-size: 35px;
+    margin-bottom: 80px;
+    font-family: 'got';
+    letter-spacing: 8px;
+    color: #ffffff;
+}
+
+/* classe e tag, usa espaco pra separar as duas embora tenha a mesma semantica de duas classes, soh quem tiver as duas classes recebe o estilo e soh quem tiver a classe e tag recebe o estilo  */
+@font-face {
+    font-family: 'GOT';
+    src: url(../fonts/GOT.ttf)
+}
+
+/* buscando fontes dentro do projeto. @font-face, entre chaves font-family com o nome da fonte do projeto e src pra indicar o local  */
+.informacoes .descricao {
+    width: 49%;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 40px;
+    height: 300px;
+    overflow: auto;
+    /* padding-right: 15px; */
+}
+
+/* line-height, aumenta o espaco entre as linhas do texto aumentando tbm a caixa
+overflow, cria uma barra de rolagem dentro da caixa, por exemplo dentro da tag p caso o texto seja muito grande. */
+.botoes-carrossel {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.botoes-carrossel .botao {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: solid transparent 2px;
+    cursor: pointer;
+    border-color: #ffffff;
+}
+
+/* border-radius, serve pra arrendontar o elemento, sendo que 50% fica bem rendondo */
+.botoes-carrossel .botao.selecionado {
+    background: #1d8346;
+}
+
+.imagem {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: none;
+}
+
+.imagem.ativa {
+    display: block;
+}
+
+@keyframes mudarImagem {
+    from {
+        opacity: 0.85;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+main:after {
+    content: "";
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(120deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.05926120448179273) 50%, rgba(0, 0, 0, 1) 90%);
+    z-index: -1;
+}
